@@ -1,0 +1,72 @@
+@import "../../common/variable";
+.top-slide {
+  position: relative;
+  padding-left: 105rpx;
+  &:before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    content: '';
+    height: 2rpx;
+    width: 94rpx;
+    background: #333;
+  }
+}
+
+.i-n {
+  text-align: center;
+  margin: 15rpx 0;
+  image {
+    width: 690rpx;
+  }
+}
+
+.contact {
+  padding: 0 30rpx;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  .dotted {
+    flex: 1;
+    border-top: 1rpx dashed #999;
+    height: 1rpx;
+    margin-right: 15rpx;
+  }
+  .iconfont {
+    border: 1rpx solid #000;
+    //width: 200rpx;
+    padding: 0 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    &:before {
+      margin-right: 16rpx;
+      font-size: 30rpx;
+    }
+  }
+}
+
+.i-list {
+  padding: 0 30rpx;
+  .bd1 {
+    padding: 30rpx 0;
+    display: flex;
+    align-items: center;
+    image {
+      width: 240rpx;
+      height: 148rpx;
+      margin-right: 28rpx;
+    }
+    .i-l-r {
+      min-height: 140rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .c999 {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

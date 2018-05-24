@@ -1,0 +1,91 @@
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  .bgImg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.wechat {
+  padding: 0 75rpx;
+  .w-img {
+    background-color: #fff;
+    padding: 86rpx;
+    margin-top: 120rpx;
+    .we-img {
+      width: 434rpx;
+      height: 438rpx;
+    }
+    .iconfont {
+      line-height: 60rpx;
+      &:before {
+        font-size: 40rpx;
+        margin-right: 30rpx;
+      }
+    }
+    .icon-weixin {
+      &:before {
+        color: #0fd342;
+      }
+    }
+    .icon-dianhua {
+      &:before {
+        color: #f2d84b;
+      }
+    }
+    .icon-dizhi {
+      &:before {
+        color: #58a4f2;
+      }
+    }
+  }
+  .save {
+    margin: 20rpx 0;
+    background-color: #272225;
+    border-radius: 80rpx;
+  }
+}
+.suggest {
+  padding: 0 30rpx;
+  .s-wrap {
+    margin-top: 120rpx;
+    padding: 20rpx 30rpx;
+    background-color: #fff;
+    label {
+      font-size: 32rpx;
+      color: #333;
+      line-height: 68rpx;
+    }
+    input {
+      height: 80rpx;
+    }
+    input, textarea {
+      font-size: 28rpx;
+      padding: 20rpx;
+      background-color: #f5f5f5;
+      box-sizing: border-box;
+    }
+    textarea {
+      width: 100%;
+    }
+  }
+  .confirm {
+    margin-top: 70rpx;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 80rpx;
+    line-height: 80rpx;
+    height: 80rpx;
+    text-align: center;
+    color: #fff;
+  }
+}

@@ -1,0 +1,28 @@
+<view class="top-slide f20 c666 bt1 lh80">路书•旅行旅拍</view>
+<view class="tac f32 c333 lh70 fw7">{{ showText }}</view>
+<navigator url="{{ active == 2 ? '../voice/voice?id=' + item.id : '../article/article?id=' + item.id }}" class="i-n" wx:for="123" wx:key="*1">
+  <image mode="widthFix" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"></image>
+</navigator>
+<navigator hover-class="none" class="contact lh54" url="../suggest/suggest?type={{ active }}">
+  <view class="dotted"></view>
+  <view class="iconfont {{ active == 1 ? 'icon-pinglun' : 'icon-weixin1' }} f24 c333">{{ active == 1 ? '留言你的故事' : '在线咨询'  }}</view>
+</navigator>
+<navigator class="i-list" url="../article/article?id={{ item.id  }}">
+  <view class="bd1">
+    <image class="br5" mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"></image>
+    <view class="i-l-r">
+      <view class="f32 c333">asdfsadfsad阿斯頓發撒旦法</view>
+      <view class="f24 c999"><text>2天前</text><text>360人浏览</text></view>
+    </view>
+  </view>
+</navigator>
+<!--错误弹窗-->
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>
+<view class="zw"></view>
+<!--<template wx:if="{{ !needUserInfo }}" is="getUserInfo"></template>-->
+<view class="nav-bottom">
+  <view catchtap="change" data-index="1" class="{{ active == 1 ? 'nb-active' : '' }} nb-n lh70" url="" open-type="redirect">公路之旅</view>
+  <view catchtap="change" data-index="2" class="{{ active == 2 ? 'nb-active' : '' }} nb-n lh70 nb-n-c" url="" open-type="redirect">公路之声</view>
+  <view catchtap="change" data-index="3" class="{{ active == 3 ? 'nb-active' : '' }} nb-n lh70" url="" open-type="redirect">旅行拍摄</view>
+</view>

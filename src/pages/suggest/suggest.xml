@@ -1,0 +1,31 @@
+<view class="bg">
+  <image class="bgImg" mode="asspectFill" src="{{ bgImg }}"></image>
+  <view wx:if="{{ wechat }}" class="wechat">
+    <view class="w-img br10">
+      <image class="we-img" src="{{ wechatImg }}"></image>
+      <view class="f32 iconfont icon-weixin c999">微信</view>
+      <view class="f32 iconfont icon-dianhua c999">1337846516</view>
+      <view class="f32 iconfont icon-dizhi c999">地址</view>
+    </view>
+    <view catchtap="saveToPhoto" class="f28 save tac lh80 cfff fw7">保存到手机</view>
+    <view class="f28 cfff tac lh60">扫二维码或保存至手机长按识别添加微信</view>
+  </view>
+  <view wx:else class="suggest">
+    <form bindsubmit="confirm">
+        <view class="s-wrap br10">
+            <label>姓名</label>
+            <input name="name" placeholder="请输入您的姓名"/>
+            <label>联系电话</label>
+            <input name="phone" type="number" placeholder="请输入您的联系电话"/>
+            <label>地址</label>
+            <input name="address" placeholder="请输入您的地址"/>
+            <label>留言内容</label>
+            <textarea maxlength="-1" name="content" placeholder="在这里输入您的留言内容"></textarea>
+        </view>
+        <button formType="submit" class="confirm">提交留言</button>
+    </form>
+  </view>
+</view>
+
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>

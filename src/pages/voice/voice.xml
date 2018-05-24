@@ -1,0 +1,23 @@
+<view wx:for="{{ listArr }}" wx:key="*2" class="v-wrap {{ active == index ? 'active' : '' }}" catchtap="play" data-index="{{ index }}">
+  <view class="iconfont {{ active == index ? 'icon-shengyin' : '' }}">{{ active == index ? '' : index * 1 + 1 }}</view>
+  <view class="v-w-r bd1">
+    <view class="f32 c333 fw7">{{ item }}</view>
+    <view class="f20 c999 lh40">2018-05-22</view>
+  </view>
+</view>
+
+ <view class="zw"></view>
+<view class="v-bottom" wx:if="{{ active >= 0 }}">
+  <image class="br zhuanqilai {{ playStatus ? 'animationplay' : 'animationpause' }}" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"></image>
+  <view class="v-b-t">
+    <view animation="{{ animationData }}" class="v-b-tt f28 c333">{{ bText }}</view>
+  </view>
+  <view class="v-b-o">
+    <view catchtap="control" data-type="prev" class="iconfont icon-047caozuo_shangyishou"></view>
+    <view catchtap="control" data-type="current" class="iconfont v-b-o-c {{ playStatus ? 'icon-bofang1' : 'icon-bofang' }}"></view>
+    <view catchtap="control" data-type="next" class="iconfont icon-047caozuo_shangyishou rotate"></view>
+  </view>
+</view>
+
+<import src="../template/template"></import>
+<template wx:if="{{ toast.show }}" is="showToast" data="{{ ...toast }}"></template>
