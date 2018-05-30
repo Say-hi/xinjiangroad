@@ -43,8 +43,9 @@ const wxParse = require('./wxParse/wxParse')
 // moment.locale('zh-cn')
 App({
   data: {
-    name: '披萨点餐小程序',
-    basedomain: 'http://group.lanzhangxiu.cn'
+    name: '新疆之路',
+    basedomain: 'http://shipuy.com',
+    contactdomain: 'http://shipuy.com/data/upload/'
   },
   call (phoneNumber = '13378692079') {
     wx.makePhoneCall({
@@ -179,11 +180,12 @@ App({
       title: '请求数据中...',
       mask: true
     })
-    if (!obj.iv) {
-      obj.data = Object.assign(obj.data, {session_key: that.gs()})
-    }
+    // if (!obj.iv) {
+    //   obj.data = Object.assign(obj.data, {session_key: that.gs()})
+    // }
     wx.request({
-      url: obj.url || useUrl.login,
+      // url: obj.url || useUrl.login,
+      url: obj.url,
       method: obj.method || 'POST',
       data: obj.data || {},
       header: {

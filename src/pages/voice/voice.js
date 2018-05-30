@@ -8,17 +8,22 @@ Page({
    * 页面的初始数据
    */
   data: {
+    basedomain: app.data.basedomain,
+    contactdomain: app.data.contactdomain,
     active: -1,
+    page: 0,
     playStatus: false,
     animationData: {},
-    listArr: ['阿卢卡斯的卷发圣诞节范德萨', '阿卢卡斯的卷发圣诞节范德萨阿卢卡斯的卷发圣诞节范德萨', '阿卢卡斯的卷发圣诞节范德萨阿卢卡斯的卷发圣诞节范德萨阿卢卡斯的卷发圣诞节范德萨阿卢卡斯的卷发圣诞节范德萨阿卢卡斯的卷发圣诞节范德萨']
+    showImg: '',
+    listArr: []
   },
   play (e) {
     if (e.currentTarget.dataset.index === this.data.active) return this.PausePlay()
     this.setData({
       active: e.currentTarget.dataset.index,
       playStatus: true,
-      bText: this.data.listArr[e.currentTarget.dataset.index]
+      bText: this.data.listArr[e.currentTarget.dataset.index].name,
+      showImg: this.data.listArr[e.currentTarget.dataset.index].image
     })
     this.playMusic()
     this.setAnimation()
@@ -95,9 +100,10 @@ Page({
     }
   },
   // 播放
-  playMusic (src) {
+  playMusic () {
+    let that = this
     wx.playBackgroundAudio({
-      dataUrl: src || 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46'
+      dataUrl: that.data.contactdomain + that.data.listArr[that.data.active].music
     })
   },
   // 暂停/播放
@@ -116,19 +122,52 @@ Page({
     })
     backgroundAudioManager.stop()
   },
+  getData (catId) {
+    let that = this
+    app.wxrequest({
+      url: `${app.data.basedomain}?g=Api&m=Index&a=musicList`,
+      data: {
+        p: ++this.data.page,
+        catId
+      },
+      success (res) {
+        wx.hideLoading()
+        if (res.data.status === 200) {
+          if (res.data.data.list.length) {
+            for (let v of res.data.data.list) {
+              v.add_time = new Date(v.add_time * 1000).toLocaleDateString().replace(/\//g, '-')
+            }
+          }
+          that.setData({
+            listArr: that.data.listArr.concat(res.data.data.list),
+            more: res.data.data.list.length < 10 ? 1 : 0
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad () {
+  onLoad (options) {
+    app.setBar(options.name)
+    let that = this
     backgroundAudioManager.onEnded(function () {
-      this.setData({
+      that.setData({
         playStatus: false,
         active: -1
       })
     })
+    this.setData({
+      options
+    })
+    this.getData(options.id)
     // TODO: onLoad
   },
-
+  onReachBottom () {
+    if (this.data.more) return app.setToast(this, {content: '没有更多内容了'})
+    this.getData(this.data.options.id)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -10,12 +10,15 @@ Page({
   getData (id) {
     let that = this
     app.wxrequest({
-      url: app.getUrl(),
+      url: `${app.data.basedomain}?g=Api&m=Index&a=articleInfo`,
       data: {
         id
       },
       success (res) {
-        app.WP('content', 'html', res, that, 5)
+        wx.hideLoading()
+        if (res.data.status === 200) {
+          app.WP('content', 'html', res.data.data.info.post_content, that, 5)
+        }
       }
     })
   },

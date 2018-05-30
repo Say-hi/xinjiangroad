@@ -1,18 +1,18 @@
 <view class="top-slide f20 c666 bt1 lh80">路书•旅行旅拍</view>
 <view class="tac f32 c333 lh70 fw7">{{ showText }}</view>
-<navigator url="{{ active == 2 ? '../voice/voice?id=' + item.id : '../article/article?id=' + item.id }}" class="i-n" wx:for="123" wx:key="*1">
-  <image mode="widthFix" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"></image>
+<navigator url="{{ active == 2 ? '../voice/voice?id=' + item.cat_id + '&name= ' + item.ad_name : '../article/article?id=' + item.ad_link }}" class="i-n" wx:for="{{ adList }}" wx:key="*1">
+  <image mode="widthFix" src="{{ contactdomain }}{{ item.image }}"></image>
 </navigator>
 <navigator hover-class="none" class="contact lh54" url="../suggest/suggest?type={{ active }}">
   <view class="dotted"></view>
   <view class="iconfont {{ active == 1 ? 'icon-pinglun' : 'icon-weixin1' }} f24 c333">{{ active == 1 ? '留言你的故事' : '在线咨询'  }}</view>
 </navigator>
-<navigator class="i-list" url="../article/article?id={{ item.id  }}">
+<navigator wx:for="{{ articleList }}" wx:key="*3" class="i-list" url="../article/article?id={{ item.id  }}">
   <view class="bd1">
-    <image class="br5" mode="aspectFill" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"></image>
+    <image class="br5" mode="aspectFill" src="{{ contactdomain }}{{ item.image }}"></image>
     <view class="i-l-r">
-      <view class="f32 c333">asdfsadfsad阿斯頓發撒旦法</view>
-      <view class="f24 c999"><text>2天前</text><text>360人浏览</text></view>
+      <view class="f32 c333">{{ item.post_title }}</view>
+      <view class="f24 c999"><text>{{ item.time_str }}</text>　<text>{{ item.post_hits }}人浏览</text></view>
     </view>
   </view>
 </navigator>

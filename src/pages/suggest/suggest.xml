@@ -1,11 +1,11 @@
 <view class="bg">
-  <image class="bgImg" mode="asspectFill" src="{{ bgImg }}"></image>
+  <image class="bgImg" mode="asspectFill" src="{{ contactdomain }}{{ info.background_img }}"></image>
   <view wx:if="{{ wechat }}" class="wechat">
     <view class="w-img br10">
-      <image class="we-img" src="{{ wechatImg }}"></image>
-      <view class="f32 iconfont icon-weixin c999">微信</view>
-      <view class="f32 iconfont icon-dianhua c999">1337846516</view>
-      <view class="f32 iconfont icon-dizhi c999">地址</view>
+      <image class="we-img" src="{{ contactdomain }}{{ info.qr_code }}"></image>
+      <view class="f32 iconfont icon-weixin c999">{{ info.weixin_name }}</view>
+      <view catchtap="call" class="f32 iconfont icon-dianhua c999">{{ info.phone }}</view>
+      <view class="f32 iconfont icon-dizhi c999">{{ info.address }}</view>
     </view>
     <view catchtap="saveToPhoto" class="f28 save tac lh80 cfff fw7">保存到手机</view>
     <view class="f28 cfff tac lh60">扫二维码或保存至手机长按识别添加微信</view>

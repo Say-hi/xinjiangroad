@@ -1,2 +1,3 @@
 <import src="../../wxParse/wxParse"></import>
-<template naem="wxParse" data="{{ wxParseData: article.nodes }}"></template>
+
+<template is="wxParse" data="{{ wxParseData: content.nodes }}"></template>
